@@ -5,7 +5,7 @@ import { useHomeContext } from '@/context/HomeContext';
 
 function Payment() {
     
-    const {details, setDetails} = useHomeContext()
+    const {details, setDetails, setActive} = useHomeContext()
     const handleChange = (e, item) => {
         console.log(item)
         const regex = /^[0-9]*$/;
@@ -44,7 +44,8 @@ function Payment() {
     }
     return (
        
-        <div className='px-52 '>
+        <div className='flex flex-col items-center justify-center w-full relative'>
+          <span onClick={()=>setActive('home')} className='absolute top-10 left-10'>back</span>
             <p className='text-3xl mt-5 font-bold text-center'>Payment</p>
             <form className='flex flex-col mt-5 items-center gap-5' onSubmit={submitHandler}>
                 {Object.keys(details).map((item, i) => {

@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const homeContext = createContext()
 function HomeProvider({ children }) {
@@ -11,11 +11,19 @@ function HomeProvider({ children }) {
         name: '',
         amount: ''
     })
-    const saveTransaction=async(action)=>{
-        console.log('done')
-        await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/saveTransaction`,{name:details.name, amount:details.amount})
+    const saveTransaction=async(action, status)=>{
+        const details2 = JSON.parse(sessionStorage.getItem('details')) 
+        console.log(details2, action)
+        await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/saveTransaction`,{name:details2.name, amount:details2.amount, status:status})
         .then(res=>{console.log(res.data); setActive(action)})
     }
+
+    useEffect(()=>{
+        if(!Object.values(details).includes('')){
+            sessionStorage.setItem('details', JSON.stringify(details))
+        }
+        
+    },[details])
   
   return (
     <homeContext.Provider value={{

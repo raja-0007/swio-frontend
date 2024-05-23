@@ -1,11 +1,12 @@
 'use client'
+import { useHomeContext } from '@/context/HomeContext'
 import React, { useEffect } from 'react'
 
 function page() {
     const {saveTransaction} = useHomeContext()
     useEffect(()=>{
         
-        saveTransaction('transactions')
+        saveTransaction('transactions','success')
     },[])
 
     return (

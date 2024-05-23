@@ -1,9 +1,11 @@
+import { useHomeContext } from '@/context/HomeContext'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 const Transactions = () => {
     const [transactions, setTransactions] = useState([])
     const [loading, setLoading] = useState(true)
+    const {setActive} = useHomeContext()
     useEffect(() => {
         const getTransactions = async () => {
             await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getTransactions`)
@@ -17,7 +19,8 @@ const Transactions = () => {
 
 
     return (
-        <div className='w-full flex flex-col text-center'>
+        <div className='w-full flex flex-col text-center relative'>
+        <span onClick={()=>setActive('home')} className='absolute top-10 left-10'>back</span>
             <p className='text-xl font-bold'>Transactions</p>
             {loading ? <div className='mx-auto text-center flex flex-col gap-5 items-center mt-10'>
                 <div >

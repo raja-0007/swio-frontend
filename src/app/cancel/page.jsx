@@ -1,12 +1,14 @@
 'use client'
+import { useHomeContext } from '@/context/HomeContext'
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 function page() {
-    const {saveTransaction} = useHomeContext()
+    const {saveTransaction, active} = useHomeContext()
     const router = useRouter()
     useEffect(()=>{
-        saveTransaction('transactions')
+        saveTransaction('transactions','failed')
+        console.log('asdfpoadsf8yap', active)
         router.push('/')
     },[])
   return (
