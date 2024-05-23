@@ -12,7 +12,7 @@ function page() {
       <div className='flex min-h-screen w-full justify-center items-center'>
         <div>
           <p>payment success</p>
-          <p>redirecting to transactions page</p>
+          <p>redirecting to transactionss page</p>
           </div> 
       </div>
     )
