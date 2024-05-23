@@ -31,7 +31,7 @@ function Payment() {
         if (!Object.values(details).includes('')) {
             // await axios.post('http://localhost:3000/api/payment', { name: details.name, amount: details.amount })
             //     .then((res) => console.log(res.data))
-           const response =  await axios.post('http://localhost:7777/api/create-checkout-session',{details:details})
+           const response =  await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/create-checkout-session`,{details:details})
           
            const session = await response.data
 

@@ -6,7 +6,7 @@ const Transactions = () => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const getTransactions = async () => {
-            await axios.get('http://localhost:7777/api/getTransactions')
+            await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getTransactions`)
                 .then((res) => { console.log(res.data); setTransactions(res.data); setLoading(false)})
         }
         getTransactions()
