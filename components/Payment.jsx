@@ -1,13 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import {loadStripe} from '@stripe/stripe-js';
+import { useHomeContext } from '@/context/HomeContext';
 
 function Payment() {
     
-    const [details, setDetails] = useState({
-        name: '',
-        amount: ''
-    })
+    const {details, setDetails} = useHomeContext()
     const handleChange = (e, item) => {
         console.log(item)
         const regex = /^[0-9]*$/;

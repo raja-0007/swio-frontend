@@ -7,9 +7,10 @@ import Scrobble from "@/components/Scrobble";
 import { useState } from "react";
 import Payment from "@/components/Payment";
 import Transactions from "@/components/Transactions";
+import { useHomeContext } from "@/context/HomeContext";
 
 export default function Home() {
-  const [active, setActive] = useState('home')
+  const {active, setActive} = useHomeContext()
   return (
     <main className="flex flex-col gap-24 items-center py-10 ">
       {/* <span className="text-green-300">text</span> */}
