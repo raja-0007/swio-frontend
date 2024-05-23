@@ -30,7 +30,7 @@ function HomePage({setActive}) {
       <span className='text-center w-60 text-sm text-gray-400'>No subscriptions. No in-app purchases. Requires macOS 11 Big Sur or later.</span>
       <div
         className='flex items-center justify-center border cursor-pointer border-gray-300 bg-slate-50 hover:bg-white mt-8 px-3 py-2 ps-16 rounded-full  relative'>
-        <img src="/shelfCallout.png" className='absolute left-0 ' alt="shelfcallout image" />
+        <img src="/shelfCallout.png" className='absolute left-0 ' alt="" />
         <span className='text-gray-500'>
           Now with <span className='font-semibold text-gray-700'>shelves and a progress bar.</span> See what's new in Sleeve 2.3
 
