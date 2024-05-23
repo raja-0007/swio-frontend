@@ -1,6 +1,10 @@
 import { useHomeContext } from '@/context/HomeContext'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { IoMdCheckmarkCircle } from "react-icons/io";
+import { FaCircleXmark } from "react-icons/fa6";
+
 
 const Transactions = () => {
     const [transactions, setTransactions] = useState([])
@@ -20,8 +24,8 @@ const Transactions = () => {
 
     return (
         <div className='w-full flex flex-col text-center relative'>
-        <span onClick={()=>setActive('home')} className='absolute top-10 left-10'>back</span>
-            <p className='text-xl font-bold'>Transactions</p>
+        <span onClick={()=>setActive('home')} className='absolute top-10 left-32 flex items-center font-bold gap-1'><MdOutlineKeyboardBackspace/>back</span>
+            <p className='text-3xl font-bold mb-10 '>Transactions</p>
             {loading ? <div className='mx-auto text-center flex flex-col gap-5 items-center mt-10'>
                 <div >
                     <div className='py-2 mb-3 rounded-md  px-14 bg-gray-400 w-[max-content] animate-pulse'>
@@ -39,12 +43,15 @@ const Transactions = () => {
                 : <div>
                     {transactions.map((item, i) => {
                         return (
-                            <div key={i} className='flex flex-col w-[max-content] ps-10 relative pe-20 mx-auto mt-10 items-start text-start border-b-2'>
-                                <span className='absolute top-0 left-0'>{i+1}.</span>
-                                <span>
-                                    <span className='font-medium me-2'>name:</span>{item.name}
+                            <div key={i} className={`flex flex-col w-[400px] p-10 py-5 relative  mx-auto mt-2 items-start text-start border-b-2 border rounded-xl ${item?.status == 'failed' ? 'bg-red-50' :'bg-green-50'}`}>
+                                <span className='flex items-center w-full justify-between'>
+                                    <span>{i+1}.</span>
+                                    <span className='flex items-center'>{item?.status == 'success' ? <IoMdCheckmarkCircle className='text-green-400'/>: <FaCircleXmark className='text-red-400'/>}{item?.status}</span>
+                                    </span>
+                                <span className='capitalize'>
+                                    <span className='font-medium me-2 capitalize'>name:</span>{item.name}
                                 </span>
-                                <span><span className='font-medium me-2'>amount:</span>{item.amount}</span>
+                                <span><span className='font-medium me-2 capitalize'>amount:</span>{item.amount}/-</span>
                             </div>
                         )
 

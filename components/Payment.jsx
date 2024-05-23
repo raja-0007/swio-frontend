@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import {loadStripe} from '@stripe/stripe-js';
 import { useHomeContext } from '@/context/HomeContext';
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+
 
 function Payment() {
     
@@ -45,9 +47,9 @@ function Payment() {
     return (
        
         <div className='flex flex-col items-center justify-center w-full relative'>
-          <span onClick={()=>setActive('home')} className='absolute top-10 left-10'>back</span>
-            <p className='text-3xl mt-5 font-bold text-center'>Payment</p>
-            <form className='flex flex-col mt-5 items-center gap-5' onSubmit={submitHandler}>
+          <span onClick={()=>setActive('home')} className='absolute top-10 left-24 flex items-center font-bold gap-1'><MdOutlineKeyboardBackspace/>back</span>
+            <p className='text-3xl mt-5 mb-5 font-bold text-center'>Payment</p>
+            <form className='flex flex-col mt-5 items-center gap-5 border shadow-md p-6' onSubmit={submitHandler}>
                 {Object.keys(details).map((item, i) => {
                     return (
                         <div key={i} className='flex flex-col'>
