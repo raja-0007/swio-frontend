@@ -8,9 +8,13 @@ import { FaArrowRight } from "react-icons/fa6";
 
 
 
-function HomePage() {
+function HomePage({setActive}) {
   return (
-    <div className='flex flex-col gap-6 items-center'>
+    <div className='flex w-full flex-col gap-6 items-center relative '>
+      <div className='absolute top-0 right-10 flex items-center gap-5 font-bold'>
+        <button type='button' className='hover:text-yellow-500' onClick={()=>setActive('payment')}>payment</button>
+        <button type='button' className='hover:text-yellow-500' onClick={()=>setActive('transactions')}>transactions</button>
+      </div>
       <span className='font-bold text-8xl relative'>Sleeve <span className='font-extralight'>2</span>
         <div className='absolute bottom-0 bg-gradient-to-b from-transparent to-white py-3 w-full'></div>
       </span>
